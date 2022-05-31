@@ -1,0 +1,30 @@
+body{
+  padding-top:80px;
+  word-wrap:break-word;
+  background: black;
+  color: rgb(0, 89, 255);
+  font-family: "mukta", Arial, Helvetica, sans-serif, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+img{
+  height: 200px;
+}
+
+h1{
+  font-size: 3em;
+  font-weight: 700;
+}
+
+p{
+  font-size: 1.5em;
+  color: white;
+  margin-top: 28px;
+
+}
+
+.author{
+  font-weight: bold;
+}
+
+h3{
+  font-size: 2em;
+}

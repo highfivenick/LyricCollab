@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <title>Lyric Collab</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Koulen&family=Mukta:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <% if(lines === undefined){lines = ""} %>
+<div class="container">
+
+    <div class="page-header text-center">
+        <h1>Lyric Collab</h1>
+        <a href="/profile" class="btn btn-default btn-sm deleteAuthorLines">Delete Your Inputs</a>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+        <a href="/profile" class="btn btn-default btn-sm deleteAll">Clear Song</a>
+    </div>
+
+    <div class="row">
+
+        <!-- LOCAL INFORMATION -->
+        
+
+        <h3>Add a line to the song</h3>
+        <% if (user.local.email) { %>
+          <form action="/postLine" method="POST">
+            <input type="text" placeholder="Name" name="name">
+            <input type="text" placeholder="Story Line" name="line">
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+        <% } %>
+
+
+        <div class="col-sm-6">
+          <div class="lines">
+          <% for(var i=0; i<lines.length; i++) {%>
+              <p class="storyLine"><span class="author"> [<%= lines[i].name %>]  </span><%= lines[i].line %></p>
+          <% } %>
+        </div>
+
+</div>
+
+<script src="main.js"></script>
+
+</body>
+</html>
