@@ -4,6 +4,7 @@
     <title>Lyric Collab</title>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://kit.fontawesome.com/7305c071a8.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -39,10 +40,15 @@
         <div class="col-sm-6">
           <div class="lines">
           <% for(var i=0; i<lines.length; i++) {%>
-              <p class="storyLine"><span class="author"> [<%= lines[i].name %>]  </span><%= lines[i].line %></p>
+              <p class="storyLine">
+                <span class="author"> [<%= lines[i].name %>]  </span> 
+                <span><%= lines[i].line %></span> 
+                <span><%= lines[i].thumbUp %></span> 
+                <span><i class="fa fa-fire" aria-hidden="true"></i></span>
+              </p>
           <% } %>
         </div>
-
+        <i class=""></i>
 </div>
 
 <script src="main.js"></script>

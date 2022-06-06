@@ -22,11 +22,11 @@ module.exports = function(app, passport, db) {
     });
 
     app.get('/updateForm', isLoggedIn, function(req, res) {
-      db.collection('messages').find().toArray((err, result) => {
+      db.collection('lines').find().toArray((err, result) => {
         if (err) return console.log(err)
         res.render('update.ejs', {
           user : req.user,
-          messages: result
+          lines: result
         })
       })
   });
@@ -43,7 +43,8 @@ module.exports = function(app, passport, db) {
     app.post('/postLine', (req, res) => {
       db.collection('lines').save({
         name: req.body.name, 
-        line: req.body.line
+        line: req.body.line,
+        thumbUp: 0
       }, (err, result) => {
         if (err) return console.log(err)
         console.log('saved to database')
@@ -70,20 +71,20 @@ module.exports = function(app, passport, db) {
       })
     })
 
-    // app.put('/messages', (req, res) => {
-    //   db.collection('messages')
-    //   .findOneAndUpdate({name: req.body.name, msg: req.body.msg}, {
-    //     $set: {
-    //       thumbUp:req.body.thumbUp + 1
-    //     }
-    //   }, {
-    //     sort: {_id: -1},
-    //     upsert: true
-    //   }, (err, result) => {
-    //     if (err) return res.send(err)
-    //     res.send(result)
-    //   })
-    // })
+    app.put('/postLine', (req, res) => {
+      db.collection('lines')
+      .findOneAndUpdate({name: req.body.name, line: req.body.line}, {
+        $set: {
+          thumbUp:req.body.thumbUp + 1
+        }
+      }, {
+        sort: {_id: -1},
+        upsert: true
+      }, (err, result) => {
+        if (err) return res.send(err)
+        res.send(result)
+      })
+    })
 
     // app.put('/thumbDown', (req, res) => {
     //   db.collection('messages')
