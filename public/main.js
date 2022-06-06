@@ -13,7 +13,8 @@ Array.from(thumbUp).forEach(function(element) {
           body: JSON.stringify({
             'name': name,
             'line': line,
-            'thumbUp':thumbUp
+            'thumbUp':thumbUp,
+            'action': 'like'
           })
         })
         .then(response => {
