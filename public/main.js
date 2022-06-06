@@ -21,8 +21,8 @@ Array.from(thumbUp).forEach(function(element) {
           if (response.ok) return response.json()
         })
         .then(data => {
-          console.log(data)
           window.location.reload(true)
+          console.log(data)
         })
       });
 });

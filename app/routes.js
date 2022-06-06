@@ -21,15 +21,15 @@ module.exports = function(app, passport, db) {
         })
     });
 
-    app.get('/updateForm', isLoggedIn, function(req, res) {
-      db.collection('lines').find().toArray((err, result) => {
-        if (err) return console.log(err)
-        res.render('update.ejs', {
-          user : req.user,
-          lines: result
-        })
-      })
-  });
+  //   app.get('/updateForm', isLoggedIn, function(req, res) {
+  //     db.collection('lines').find().toArray((err, result) => {
+  //       if (err) return console.log(err)
+  //       res.render('update.ejs', {
+  //         user : req.user,
+  //         lines: result
+  //       })
+  //     })
+  // });
 
 
     // LOGOUT ==============================
@@ -52,24 +52,24 @@ module.exports = function(app, passport, db) {
       })
     })
 
-    app.post('/update', (req, res) => {
-      db.collection('users').findOneAndUpdate({
-        _id: ObjectId(req.user._id)
-      },{
-        $set: {
-          local:{
-            email: req.body.email,
-            password: req.user.local.password,
-          }
-        }
-      },{
-        upsert: false
-      },(error, result)=>{
-        if(error) return console.log(error)
-        console.log("save to database")
-        res.redirect('/profile')
-      })
-    })
+    // app.post('/update', (req, res) => {
+    //   db.collection('users').findOneAndUpdate({
+    //     _id: ObjectId(req.user._id)
+    //   },{
+    //     $set: {
+    //       local:{
+    //         email: req.body.email,
+    //         password: req.user.local.password,
+    //       }
+    //     }
+    //   },{
+    //     upsert: false
+    //   },(error, result)=>{
+    //     if(error) return console.log(error)
+    //     console.log("save to database")
+    //     res.redirect('/profile')
+    //   })
+    // })
 
     app.put('/postLine', (req, res) => {
       db.collection('lines')
